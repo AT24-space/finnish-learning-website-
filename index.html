@@ -1,0 +1,1993 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Suomi — Finnish Vocabulary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --ink:    #1a1a2e;
+  --ink2:   #3d3d5c;
+  --ink3:   #7b7b9a;
+  --paper:  #f5f3ee;
+  --card:   #ffffff;
+  --line:   #e8e4dc;
+  --blue:   #2d5be3;
+  --blue2:  #1a3fcc;
+  --green:  #1a8a5a;
+  --red:    #c0392b;
+  --gold:   #c9a84c;
+  --easy:   #1a8a5a;
+  --ok:     #2d5be3;
+  --hard:   #c0392b;
+  --shadow: 0 2px 8px rgba(26,26,46,0.08);
+  --shadow-lg: 0 8px 32px rgba(26,26,46,0.12);
+}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.app-shell { display: flex; flex-direction: column; min-height: 100vh; }
+
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.topbar-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.topbar-brand span { color: var(--gold); }
+
+.topbar-tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+.ttab {
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font: 500 13px 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.ttab:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.ttab.active { background: rgba(255,255,255,0.15); color: #fff; }
+
+.topbar-stats {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.tstat {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.tstat b { color: #fff; font-size: 14px; }
+
+.main { flex: 1; padding: 20px 24px; max-width: 1600px; margin: 0 auto; width: 100%; }
+
+/* ── PANELS ─────────────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── DASHBOARD ─────────────────────────────────────────────── */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.dash-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.dash-card-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3); margin-bottom: 8px; }
+.dash-card-value { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--ink); line-height: 1; }
+.dash-card-sub { font-size: 12px; color: var(--ink3); margin-top: 6px; }
+.dash-card.accent { background: var(--ink); }
+.dash-card.accent .dash-card-label { color: rgba(255,255,255,0.5); }
+.dash-card.accent .dash-card-value { color: var(--gold); }
+.dash-card.accent .dash-card-sub { color: rgba(255,255,255,0.4); }
+
+.progress-bar-wrap { margin-top: 10px; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--blue); border-radius: 999px; transition: width 0.4s; }
+
+.dash-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+
+.due-list { display: flex; flex-direction: column; gap: 8px; }
+.due-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+.due-item-word { font-weight: 600; font-size: 15px; }
+.due-item-sub { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+.due-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.due-badge.new { background: #e8f0ff; color: var(--blue); }
+.due-badge.review { background: #fff3cd; color: #856404; }
+.due-badge.overdue { background: #fde8e8; color: var(--red); }
+
+/* ── ADD WORD BAR ─────────────────────────────────────────── */
+.add-bar {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.add-bar-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.add-bar input {
+  flex: 1;
+  min-width: 120px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font: 14px 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  transition: border-color 0.18s;
+}
+.add-bar input:focus { outline: none; border-color: var(--blue); background: #fff; }
+.add-bar input::placeholder { color: var(--ink3); }
+
+/* ── TOOLBAR ─────────────────────────────────────────────── */
+.toolbar {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+.toolbar-group { display: flex; gap: 8px; align-items: center; }
+.toolbar-label { font-size: 12px; color: var(--ink3); font-weight: 500; white-space: nowrap; }
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+button { font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; }
+.btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font: 500 13px 'DM Sans', sans-serif;
+  color: var(--ink2);
+}
+.btn:hover { background: var(--paper); border-color: #bbb; }
+.btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+.btn.primary:hover { background: var(--blue2); border-color: var(--blue2); }
+.btn.danger { color: var(--red); }
+.btn.danger:hover { background: #fde8e8; border-color: var(--red); }
+.btn.sm { padding: 5px 10px; font-size: 12px; border-radius: 8px; }
+.btn.xs { padding: 3px 8px; font-size: 11px; border-radius: 6px; }
+
+select {
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  font: 13px 'DM Sans', sans-serif;
+  color: var(--ink2);
+  background: #fff;
+  cursor: pointer;
+}
+select:focus { outline: none; border-color: var(--blue); }
+
+/* ── SEARCH ─────────────────────────────────────────────── */
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 7px 12px 7px 32px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font: 13px 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+.search-wrap input:focus { outline: none; border-color: var(--blue); }
+.search-icon {
+  position: absolute;
+  left: 10px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink3);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ── PAGINATION ─────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0 4px;
+  flex-wrap: wrap;
+}
+.pag-btn {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font: 13px 'DM Mono', monospace;
+  color: var(--ink2);
+  display: flex; align-items: center; justify-content: center;
+}
+.pag-btn:hover { border-color: var(--blue); color: var(--blue); }
+.pag-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.pag-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.pag-info { font-size: 12px; color: var(--ink3); padding: 0 6px; }
+
+/* ── PRACTICE GRID ─────────────────────────────────────── */
+.grid { display: grid; gap: 10px; align-items: start; }
+.col {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s;
+}
+.col:hover { box-shadow: var(--shadow-lg); }
+
+.head {
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+  border-bottom: 1px solid #d8e4ff;
+}
+.hText {
+  width: 100%;
+  border: none; outline: none;
+  background: transparent;
+  resize: none; overflow: hidden;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word;
+  padding: 2px 0; margin: 0;
+  line-height: 1.35; box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+.hText.en { font-size: 11px; font-weight: 600; color: var(--ink2); }
+.hText.fi { font-size: 14px; font-weight: 800; margin-top: 2px; color: var(--ink); font-family: 'DM Serif Display', serif; }
+.hText.ar { font-size: 12px; direction: rtl; margin-top: 2px; color: var(--ink3); display: none; }
+.col.has-ar .hText.ar { display: block; }
+
+.meta {
+  margin-top: 8px; display: flex; gap: 5px;
+  flex-wrap: wrap; align-items: center;
+}
+.pill {
+  font-size: 11px; padding: 2px 7px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: #fff; display: flex; align-items: center; gap: 3px;
+  color: var(--ink2); cursor: pointer; font-family: 'DM Sans', sans-serif;
+}
+.pill:hover { border-color: #999; }
+.pill.danger { border-color: var(--red); color: var(--red); }
+.pill.danger:hover { background: #fde8e8; }
+.pill input[type=checkbox] { width: 12px; height: 12px; accent-color: var(--blue); }
+
+/* SRS badge on card */
+.srs-badge {
+  font-size: 10px; padding: 2px 6px;
+  border-radius: 999px; font-weight: 600;
+  font-family: 'DM Mono', monospace;
+}
+.srs-new { background: #e8f0ff; color: var(--blue); border: 1px solid #c0d4ff; }
+.srs-due { background: #fff3cd; color: #856404; border: 1px solid #ffd970; }
+.srs-ok  { background: #e8fdf0; color: var(--green); border: 1px solid #9fe8c0; }
+
+.repeat { padding: 8px 10px; }
+.line { height: 26px; border-bottom: 1px dashed #eee; display: flex; align-items: center; }
+.repInput {
+  width: 100%; border: none; outline: none; background: transparent;
+  font: 13px 'DM Mono', monospace;
+  padding: 2px 0; margin: 0; line-height: 1.25; color: var(--ink);
+}
+.hide-fi .fi { visibility: hidden; }
+.hide-fi .repInput { color: transparent; caret-color: transparent; }
+
+.review { padding: 8px 10px; background: #fffbf0; border-top: 1px solid #f0e8cc; }
+.reviewTitle {
+  font-size: 10px; font-weight: 700; margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.06em; color: #856404;
+}
+.review input {
+  width: 100%; box-sizing: border-box; font-size: 12px;
+  border-radius: 6px; border: 1px solid #f0e0a0;
+  padding: 4px 8px; background: #fffdf5;
+  font-family: 'DM Mono', monospace; color: var(--ink);
+}
+.review input:focus { outline: none; border-color: var(--gold); }
+
+/* accuracy mini bar */
+.acc-bar {
+  display: flex; align-items: center; gap: 5px; margin-top: 4px;
+}
+.acc-label { font-size: 10px; color: var(--ink3); }
+.acc-mini { flex: 1; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.acc-fill { height: 100%; border-radius: 999px; }
+
+/* ── QUIZ ────────────────────────────────────────────────── */
+.quiz-shell {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.quiz-header {
+  display: flex; gap: 12px; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap;
+}
+.quiz-progress-wrap {
+  flex: 1;
+  background: var(--line);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+  min-width: 120px;
+}
+.quiz-progress-fill {
+  height: 100%; background: var(--blue); border-radius: 999px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+}
+.quiz-count {
+  font: 500 13px 'DM Mono', monospace;
+  color: var(--ink3);
+  white-space: nowrap;
+}
+
+.quiz-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px 28px 24px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 16px;
+}
+.quiz-direction {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink3); margin-bottom: 12px;
+}
+.quiz-word {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; color: var(--ink);
+  line-height: 1.15; margin-bottom: 8px;
+}
+.quiz-sub { font-size: 16px; color: var(--ink3); direction: rtl; }
+.quiz-tags {
+  margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.quiz-tag {
+  font-size: 11px; padding: 2px 8px;
+  border-radius: 999px; background: var(--paper);
+  border: 1px solid var(--line); color: var(--ink3);
+}
+.quiz-srs-info {
+  margin-top: 8px; font-size: 11px; color: var(--ink3);
+  font-family: 'DM Mono', monospace;
+}
+
+.quiz-input-row {
+  display: flex; gap: 10px; margin-bottom: 12px;
+}
+.quiz-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  font: 18px 'DM Mono', monospace;
+  color: var(--ink);
+  transition: border-color 0.18s;
+}
+.quiz-input:focus { outline: none; border-color: var(--blue); }
+.quiz-input.correct { border-color: var(--green); background: #f0fdf4; }
+.quiz-input.wrong { border-color: var(--red); background: #fef2f2; }
+
+.quiz-result {
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  min-height: 50px;
+  font-size: 15px;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result.ok { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.quiz-result.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.result-correct { font-weight: 700; color: var(--green); }
+.result-wrong { font-weight: 700; color: var(--red); }
+.result-answer { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); margin-top: 4px; }
+
+/* SRS buttons */
+.srs-buttons {
+  display: none;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.srs-buttons.show { display: flex; }
+.srs-btn {
+  flex: 1; padding: 12px;
+  border-radius: 12px; border: 2px solid;
+  font: 600 14px 'DM Sans', sans-serif;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  cursor: pointer; transition: all 0.18s;
+}
+.srs-btn span { font-size: 10px; font-weight: 400; opacity: 0.7; }
+.srs-hard { background: #fef2f2; border-color: #fca5a5; color: var(--red); }
+.srs-hard:hover { background: #fee2e2; }
+.srs-ok { background: #eff6ff; border-color: #93c5fd; color: var(--blue); }
+.srs-ok:hover { background: #dbeafe; }
+.srs-easy { background: #f0fdf4; border-color: #86efac; color: var(--green); }
+.srs-easy:hover { background: #dcfce7; }
+
+.quiz-actions { display: flex; gap: 10px; }
+
+/* Session done */
+.session-done {
+  text-align: center; padding: 48px 24px;
+}
+.session-done-emoji { font-size: 56px; margin-bottom: 16px; }
+.session-done-title { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 8px; }
+.session-done-sub { color: var(--ink3); margin-bottom: 24px; }
+.session-stats {
+  display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap;
+}
+.session-stat {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 20px; text-align: center;
+}
+.session-stat-val { font-family: 'DM Serif Display', serif; font-size: 28px; }
+.session-stat-lbl { font-size: 11px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── TAGS MANAGER ───────────────────────────────────────── */
+.tags-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.tag-cloud { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.tag-chip {
+  font-size: 12px; padding: 4px 12px;
+  border-radius: 999px; border: 1.5px solid var(--line);
+  background: #fff; cursor: pointer; font-weight: 500;
+  transition: all 0.15s; color: var(--ink2);
+}
+.tag-chip:hover { border-color: var(--blue); color: var(--blue); }
+.tag-chip.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.tag-chip.all { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* ── SETTINGS / BACKUP ──────────────────────────────────── */
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.settings-section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.settings-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; margin-bottom: 14px;
+}
+.settings-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--line); gap: 12px;
+}
+.settings-row:last-child { border-bottom: none; }
+.settings-lbl { font-size: 13px; color: var(--ink2); }
+.settings-sub { font-size: 11px; color: var(--ink3); margin-top: 2px; }
+
+/* ── TOAST ──────────────────────────────────────────────── */
+#toast {
+  position: fixed; bottom: 24px; right: 24px;
+  padding: 12px 20px;
+  background: var(--ink); color: white;
+  border-radius: 12px; display: none; z-index: 9999;
+  font: 500 13px 'DM Sans', sans-serif;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: toastIn 0.25s ease-out;
+}
+@keyframes toastIn { from { transform: translateY(60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ── EMPTY STATE ─────────────────────────────────────────── */
+.empty {
+  text-align: center; padding: 48px 24px;
+  color: var(--ink3);
+}
+.empty-icon { font-size: 48px; margin-bottom: 12px; }
+.empty-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink2); margin-bottom: 6px; }
+
+/* ── UTILITY ─────────────────────────────────────────────── */
+.flex { display: flex; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.flex-1 { flex: 1; }
+.muted { color: var(--ink3); font-size: 12px; }
+.bold { font-weight: 700; }
+.mt-4 { margin-top: 4px; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.hidden { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 999px; }
+
+/* ── MOBILE ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Topbar: stack brand + stats, nav becomes bottom bar */
+  .topbar {
+    padding: 0 14px;
+    gap: 10px;
+    height: 48px;
+    justify-content: space-between;
+  }
+  .topbar-brand { font-size: 17px; }
+  .topbar-tabs { display: none; }   /* hidden — replaced by bottom nav */
+  .topbar-stats { gap: 8px; }
+  .tstat { font-size: 11px; gap: 3px; }
+  .tstat b { font-size: 12px; }
+
+  /* Bottom navigation bar */
+  .bottom-nav {
+    display: flex;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--ink);
+    z-index: 200;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .bnav-btn {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8px 4px 6px;
+    background: transparent; border: none;
+    color: rgba(255,255,255,0.5);
+    font: 10px 'DM Sans', sans-serif; gap: 3px;
+    cursor: pointer; transition: color 0.15s;
+  }
+  .bnav-btn .bnav-icon { font-size: 20px; line-height: 1; }
+  .bnav-btn.active { color: var(--gold); }
+
+  /* Add bottom nav padding to main */
+  .main {
+    padding: 14px 12px;
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
+
+  /* Dashboard */
+  .dash-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .dash-card { padding: 14px; border-radius: 12px; }
+  .dash-card-value { font-size: 28px; }
+  .dash-section-title { font-size: 17px; }
+
+  .dash-grid > .dash-card:first-child { grid-column: span 2; }
+
+  /* Dashboard flex layout — stack vertically */
+  .flex.gap-12[style*="flex-wrap"] { flex-direction: column; }
+
+  /* Add Word bar */
+  .add-bar { padding: 12px; border-radius: 12px; }
+  .add-bar-row { flex-direction: column; gap: 8px; }
+  .add-bar-row input { min-width: 0; width: 100%; font-size: 16px; /* prevent iOS zoom */ }
+  .add-bar-row .btn { width: 100%; justify-content: center; padding: 11px; font-size: 15px; }
+
+  /* Toolbar — scrollable horizontal strip */
+  .toolbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 10px 12px;
+    gap: 8px;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .toolbar::-webkit-scrollbar { display: none; }
+  .toolbar-group { flex-shrink: 0; }
+  .toolbar select, .toolbar .btn { font-size: 13px; }
+
+  /* Tag cloud */
+  .tag-cloud { gap: 6px; }
+  .tag-chip { font-size: 12px; padding: 5px 12px; }
+
+  /* Practice grid — force 2 cols on phone */
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px; }
+  .col { border-radius: 10px; }
+  .head { padding: 8px 10px; }
+  .hText.fi { font-size: 13px; }
+  .hText.en { font-size: 11px; }
+  .repeat { padding: 6px 8px; }
+  .repInput { font-size: 12px; }
+  .line { height: 22px; }
+
+  /* Pagination */
+  .pagination { gap: 4px; }
+  .pag-btn { width: 30px; height: 30px; font-size: 12px; }
+
+  /* Quiz */
+  .quiz-shell { max-width: 100%; }
+  .quiz-card { padding: 22px 18px 18px; border-radius: 16px; }
+  .quiz-word { font-size: 28px; }
+  .quiz-sub { font-size: 14px; }
+  .quiz-input { font-size: 16px; padding: 11px 14px; }   /* 16px prevents iOS zoom */
+  .srs-btn { padding: 10px 6px; font-size: 13px; }
+  .srs-btn span { font-size: 10px; }
+
+  /* Session done */
+  .session-done { padding: 32px 16px; }
+  .session-done-emoji { font-size: 44px; }
+  .session-done-title { font-size: 22px; }
+  .session-stats { gap: 10px; }
+  .session-stat { padding: 10px 16px; }
+  .session-stat-val { font-size: 24px; }
+
+  /* Settings */
+  .settings-grid { grid-template-columns: 1fr; gap: 12px; }
+  .settings-section { padding: 16px; border-radius: 12px; }
+  .settings-row { flex-wrap: wrap; gap: 8px; }
+
+  /* Due / weak list */
+  .due-item { padding: 10px 12px; border-radius: 10px; }
+  .due-item-word { font-size: 14px; }
+}
+
+/* Show bottom nav only on mobile */
+.bottom-nav { display: none; }
+@media (max-width: 640px) {
+  .bottom-nav { display: flex; }
+}
+</style>
+</head>
+<body>
+<div class="app-shell">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">Suomi <span>✦</span></div>
+  <div class="topbar-tabs">
+    <button class="ttab active" data-page="dashboard">Dashboard</button>
+    <button class="ttab" data-page="practice">Practice</button>
+    <button class="ttab" data-page="quiz">Quiz</button>
+    <button class="ttab" data-page="settings">Settings</button>
+  </div>
+  <div class="topbar-stats">
+    <div class="tstat">Words <b id="hdrTotal">0</b></div>
+    <div class="tstat">Mastered <b id="hdrMastered">0</b></div>
+    <div class="tstat">Due <b id="hdrDue">0</b></div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══ DASHBOARD ════════════════════════════════════════════ -->
+<div class="page active" id="page-dashboard">
+  <div class="dash-grid">
+    <div class="dash-card accent">
+      <div class="dash-card-label">Total Words</div>
+      <div class="dash-card-value" id="dTotal">0</div>
+      <div class="dash-card-sub">in your vocabulary</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Mastered</div>
+      <div class="dash-card-value" id="dMastered">0</div>
+      <div class="dash-card-sub" id="dMasteredPct">0% of total</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="dMasteredBar" style="width:0%"></div></div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Due Today</div>
+      <div class="dash-card-value" id="dDue">0</div>
+      <div class="dash-card-sub">words to review</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">New Words</div>
+      <div class="dash-card-value" id="dNew">0</div>
+      <div class="dash-card-sub">never quizzed</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Overall Accuracy</div>
+      <div class="dash-card-value" id="dAccuracy">—</div>
+      <div class="dash-card-sub" id="dAccSub">across all quizzes</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="dAccBar" style="width:0%; background: var(--green)"></div></div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Session Streak</div>
+      <div class="dash-card-value" id="dStreak">0</div>
+      <div class="dash-card-sub">days in a row</div>
+    </div>
+  </div>
+
+  <div class="flex gap-12" style="flex-wrap:wrap; align-items:flex-start;">
+    <div style="flex:2; min-width:260px;">
+      <div class="dash-section-title">Start a Session</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
+        <button class="btn primary" id="btnDashQuiz" style="font-size:15px; padding:12px 24px;">
+          🎯 Start Daily Review
+        </button>
+        <button class="btn" id="btnDashNew" style="font-size:14px; padding:12px 20px;">
+          ✨ Learn New Words
+        </button>
+        <button class="btn" id="btnDashAll" style="font-size:14px; padding:12px 20px;">
+          🔀 Full Shuffle
+        </button>
+      </div>
+
+      <div class="dash-section-title">Weakest Words</div>
+      <div class="due-list" id="weakList"></div>
+    </div>
+
+    <div style="flex:1; min-width:220px;">
+      <div class="dash-section-title">Tags</div>
+      <div class="due-list" id="tagStats"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRACTICE ══════════════════════════════════════════════ -->
+<div class="page" id="page-practice">
+  <!-- Add Word Bar -->
+  <div class="add-bar">
+    <div class="add-bar-row">
+      <input id="inEn" placeholder="English" spellcheck="true" />
+      <input id="inFi" placeholder="Finnish" spellcheck="true" />
+      <input id="inAr" placeholder="Arabic (optional)" spellcheck="true" />
+      <input id="inTag" placeholder="Tag (e.g. Lesson 1)" spellcheck="false" list="tagSuggest" />
+      <datalist id="tagSuggest"></datalist>
+      <button class="btn primary" id="btnAdd">Add Word</button>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-group flex-1">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="searchInput" placeholder="Search words…" autocomplete="off" />
+      </div>
+    </div>
+    <div class="toolbar-group">
+      <div class="toolbar-label">Filter</div>
+      <select id="practiceFilter">
+        <option value="not_mastered" selected>Not mastered</option>
+        <option value="new_only">New only</option>
+        <option value="all">All</option>
+        <option value="mastered">Mastered</option>
+      </select>
+    </div>
+    <div class="toolbar-group">
+      <div class="toolbar-label">Sort</div>
+      <select id="practiceSort">
+        <option value="added">Date added</option>
+        <option value="alpha_en">A–Z English</option>
+        <option value="alpha_fi">A–Z Finnish</option>
+        <option value="accuracy">Lowest accuracy</option>
+        <option value="srs">Due for review</option>
+      </select>
+    </div>
+    <div class="toolbar-group">
+      <div class="toolbar-label">Tag</div>
+      <select id="tagFilter">
+        <option value="">All tags</option>
+      </select>
+    </div>
+    <div class="toolbar-group">
+      <div class="toolbar-label">Reps</div>
+      <select id="selReps">
+        <option value="12">12</option>
+        <option value="15">15</option>
+        <option value="20" selected>20</option>
+      </select>
+    </div>
+    <div class="toolbar-group">
+      <div class="toolbar-label">Cols</div>
+      <select id="selCols">
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10" selected>10</option>
+        <option value="12">12</option>
+      </select>
+    </div>
+    <button class="btn" id="btnToggleHide">Hide / Show Finnish</button>
+    <button class="btn sm" id="btnClearReps">Clear All Reps</button>
+    <span class="muted">Shown: <b id="statShown">0</b></span>
+  </div>
+
+  <!-- Tag cloud -->
+  <div id="tagCloudWrap" class="tag-cloud" style="margin-bottom:12px;"></div>
+
+  <!-- Grid -->
+  <div id="grid" class="grid"></div>
+  <div id="practiceEmpty" class="empty hidden">
+    <div class="empty-icon">📭</div>
+    <div class="empty-title">No words match your filters</div>
+    <div class="muted">Try changing the filter or search query.</div>
+  </div>
+
+  <!-- Pagination -->
+  <div id="pagination" class="pagination"></div>
+</div>
+
+<!-- ══ QUIZ ══════════════════════════════════════════════════ -->
+<div class="page" id="page-quiz">
+  <div class="quiz-shell">
+
+    <!-- Quiz header / controls -->
+    <div class="toolbar" style="margin-bottom:16px;">
+      <div class="toolbar-group">
+        <div class="toolbar-label">Pool</div>
+        <select id="quizFilter">
+          <option value="due" selected>Due + New</option>
+          <option value="new_only">New only</option>
+          <option value="not_mastered">Not mastered</option>
+          <option value="all">All words</option>
+          <option value="weak">Weakest (< 60%)</option>
+          <option value="tag">By tag…</option>
+        </select>
+      </div>
+      <div class="toolbar-group" id="quizTagGroup" style="display:none;">
+        <select id="quizTagSel"></select>
+      </div>
+      <div class="toolbar-group">
+        <div class="toolbar-label">Direction</div>
+        <select id="quizDirection">
+          <option value="en_to_fi">EN → FI</option>
+          <option value="fi_to_en">FI → EN</option>
+          <option value="mix">Mix</option>
+        </select>
+      </div>
+      <div class="toolbar-group">
+        <div class="toolbar-label">Session</div>
+        <select id="quizSessionSize">
+          <option value="10">10 words</option>
+          <option value="20" selected>20 words</option>
+          <option value="30">30 words</option>
+          <option value="50">50 words</option>
+          <option value="0">All</option>
+        </select>
+      </div>
+      <button class="btn primary" id="btnStartQuiz">▶ Start</button>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="quiz-header" id="quizProgressRow" style="display:none;">
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+      <div class="quiz-count" id="qCount">0 / 0</div>
+    </div>
+
+    <!-- Question card -->
+    <div class="quiz-card" id="quizCard" style="display:none;">
+      <div class="quiz-direction" id="qDirection">English → Finnish</div>
+      <div class="quiz-word" id="qWord">—</div>
+      <div class="quiz-sub" id="qSub"></div>
+      <div class="quiz-tags" id="qTags"></div>
+      <div class="quiz-srs-info" id="qSrsInfo"></div>
+    </div>
+
+    <!-- Input -->
+    <div class="quiz-input-row" id="quizInputRow" style="display:none;">
+      <input id="qAnswer" class="quiz-input" placeholder="Type answer…" spellcheck="false" autocomplete="off" />
+      <button class="btn primary" id="btnCheck">Check</button>
+    </div>
+
+    <!-- Result -->
+    <div class="quiz-result" id="qResult"></div>
+
+    <!-- SRS rating buttons -->
+    <div class="srs-buttons" id="srsButtons">
+      <button class="srs-btn srs-hard" id="btnHard">Hard<span>+1 day</span></button>
+      <button class="srs-btn srs-ok"   id="btnOk">  Good<span id="btnOkLabel">+3 days</span></button>
+      <button class="srs-btn srs-easy" id="btnEasy">Easy<span id="btnEasyLabel">+7 days</span></button>
+    </div>
+
+    <!-- Secondary actions -->
+    <div class="quiz-actions" id="quizActions" style="display:none;">
+      <button class="btn flex-1" id="btnReveal">Reveal Answer</button>
+      <button class="btn flex-1" id="btnSkip">Skip</button>
+    </div>
+
+    <!-- Done screen -->
+    <div id="sessionDone" style="display:none;">
+      <div class="session-done">
+        <div class="session-done-emoji">🎉</div>
+        <div class="session-done-title">Session Complete!</div>
+        <div class="session-done-sub" id="doneSubtext">Great work on your Finnish today.</div>
+        <div class="session-stats">
+          <div class="session-stat">
+            <div class="session-stat-val" id="doneCorrect">0</div>
+            <div class="session-stat-lbl">Correct</div>
+          </div>
+          <div class="session-stat">
+            <div class="session-stat-val" id="doneWrong">0</div>
+            <div class="session-stat-lbl">Wrong</div>
+          </div>
+          <div class="session-stat">
+            <div class="session-stat-val" id="doneAcc">—</div>
+            <div class="session-stat-lbl">Accuracy</div>
+          </div>
+        </div>
+        <button class="btn primary" id="btnAgain" style="margin-right:10px;">Same Settings</button>
+        <button class="btn" id="btnGoHome">← Dashboard</button>
+      </div>
+    </div>
+
+    <!-- Idle screen -->
+    <div id="quizIdle">
+      <div class="session-done">
+        <div class="session-done-emoji">🇫🇮</div>
+        <div class="session-done-title">Ready to quiz?</div>
+        <div class="session-done-sub">Choose your settings above and press Start.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ SETTINGS ══════════════════════════════════════════════ -->
+<div class="page" id="page-settings">
+  <div class="settings-grid">
+    <div class="settings-section">
+      <div class="settings-title">Display</div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Repetition lines</div><div class="settings-sub">Lines per word card</div></div>
+        <select id="sReps"><option value="12">12</option><option value="15">15</option><option value="20" selected>20</option></select>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Grid columns</div><div class="settings-sub">Cards per row</div></div>
+        <select id="sCols"><option value="4">4</option><option value="6">6</option><option value="8">8</option><option value="10" selected>10</option><option value="12">12</option></select>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Cards per page</div><div class="settings-sub">Pagination size</div></div>
+        <select id="sPageSize"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option><option value="200">200</option></select>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-title">Data</div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Export Anki CSV</div><div class="settings-sub">Import into Anki</div></div>
+        <button class="btn sm" id="btnExport">Export</button>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Backup JSON</div><div class="settings-sub">Download all data</div></div>
+        <button class="btn sm" id="btnBackup">Backup</button>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Restore JSON</div><div class="settings-sub">Load from backup</div></div>
+        <button class="btn sm" id="btnRestore">Restore</button>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Storage used</div><div class="settings-sub">localStorage limit ~5 MB</div></div>
+        <span class="muted" id="storageUsed">—</span>
+      </div>
+      <input id="restoreFile" type="file" accept="application/json" class="hidden" />
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-title">Danger Zone</div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Clear all reps</div><div class="settings-sub">Reset all repetition text</div></div>
+        <button class="btn sm danger" id="btnClearRepsAll">Clear</button>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Reset SRS data</div><div class="settings-sub">Forget all review history</div></div>
+        <button class="btn sm danger" id="btnResetSRS">Reset</button>
+      </div>
+      <div class="settings-row">
+        <div><div class="settings-lbl">Delete all words</div><div class="settings-sub">Permanently remove everything</div></div>
+        <button class="btn sm danger" id="btnResetAll">Delete All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /app-shell -->
+
+<!-- Mobile bottom navigation -->
+<nav class="bottom-nav" id="bottomNav">
+  <button class="bnav-btn active" data-page="dashboard">
+    <span class="bnav-icon">🏠</span>Home
+  </button>
+  <button class="bnav-btn" data-page="practice">
+    <span class="bnav-icon">📝</span>Practice
+  </button>
+  <button class="bnav-btn" data-page="quiz">
+    <span class="bnav-icon">🎯</span>Quiz
+  </button>
+  <button class="bnav-btn" data-page="settings">
+    <span class="bnav-icon">⚙️</span>Settings
+  </button>
+</nav>
+
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   STORAGE & DATA MODEL
+═══════════════════════════════════════════════════════════ */
+const STORAGE_KEY = "suomi_vocab_v3";
+const OLD_KEY_V2  = "fi_vocab_delete_word_v2";
+const OLD_KEY_V1  = "fi_vocab_delete_word_v1";
+
+const $ = id => document.getElementById(id);
+
+/* SRS helpers */
+const SRS_INTERVALS = { hard: 1, ok: 3, easy: 7 };
+const todayStamp = () => new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+
+function srsIsDue(word) {
+  if (!word.srsNextReview) return true; // never reviewed = new
+  return word.srsNextReview <= todayStamp();
+}
+function srsIsNew(word) {
+  return !word.srsNextReview;
+}
+
+function defaultWord(w) {
+  return {
+    en: String(w.en || ""),
+    fi: String(w.fi || ""),
+    ar: String(w.ar || ""),
+    tag: String(w.tag || ""),
+    review: String(w.review || ""),
+    mastered: !!w.mastered,
+    includeQuiz: !!w.includeQuiz,
+    reps: Array.isArray(w.reps) ? w.reps.map(x => String(x ?? "")) : [],
+    // SRS
+    srsInterval: Number(w.srsInterval || 0),
+    srsNextReview: w.srsNextReview || null,
+    srsEase: Number(w.srsEase || 2.5),
+    // Stats
+    correctCount: Number(w.correctCount || 0),
+    wrongCount: Number(w.wrongCount || 0),
+  };
+}
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const obj = JSON.parse(raw);
+      if (obj && Array.isArray(obj.words)) return normalizeData(obj);
+    }
+  } catch {}
+  // migrate from old keys
+  for (const key of [OLD_KEY_V2, OLD_KEY_V1]) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const obj = JSON.parse(raw);
+        if (obj && Array.isArray(obj.words)) {
+          const migrated = normalizeData(obj);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+          return migrated;
+        }
+      }
+    } catch {}
+  }
+  return defaultData();
+}
+
+function defaultData() {
+  return {
+    repsCount: 20, cols: 10, pageSize: 50,
+    hideFi: false, practiceFilter: "not_mastered",
+    practiceSort: "added", quizFilter: "due",
+    quizDirection: "en_to_fi", quizSessionSize: 20,
+    lastSession: null, streak: 0, lastStreakDate: null,
+    words: []
+  };
+}
+
+function normalizeData(obj) {
+  const d = defaultData();
+  return {
+    ...d,
+    repsCount: Number(obj.repsCount || d.repsCount),
+    cols: Number(obj.cols || d.cols),
+    pageSize: Number(obj.pageSize || d.pageSize),
+    hideFi: !!obj.hideFi,
+    practiceFilter: String(obj.practiceFilter || d.practiceFilter),
+    practiceSort: String(obj.practiceSort || d.practiceSort),
+    quizFilter: String(obj.quizFilter || d.quizFilter),
+    quizDirection: String(obj.quizDirection || d.quizDirection),
+    quizSessionSize: Number(obj.quizSessionSize ?? d.quizSessionSize),
+    streak: Number(obj.streak || 0),
+    lastStreakDate: obj.lastStreakDate || null,
+    words: (Array.isArray(obj.words) ? obj.words : []).map(defaultWord)
+  };
+}
+
+let data = loadData();
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+  catch (e) { showToast("⚠ Storage full! Please backup and trim.", "#c0392b"); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════════════════ */
+function normalizeSpaces(s) { return (s || "").replace(/\s+/g, " ").trim(); }
+function sentenceCase(s) { s = normalizeSpaces(s); return s ? s[0].toUpperCase() + s.slice(1) : ""; }
+function normFi(s) { return normalizeSpaces(s).toLowerCase(); }
+function matchKey(s) { return (s || "").toLowerCase().replace(/[^a-z0-9äöå]/gi, ""); }
+function escHtml(s) {
+  return String(s ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;")
+    .replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+}
+function hasPracticed(w) {
+  return Array.isArray(w.reps) && w.reps.some(v => (v || "").trim().length > 0);
+}
+function wordAccuracy(w) {
+  const total = w.correctCount + w.wrongCount;
+  if (!total) return null;
+  return Math.round(w.correctCount / total * 100);
+}
+
+function showToast(msg, color = "#1a1a2e") {
+  const t = $("toast");
+  t.textContent = msg;
+  t.style.background = color;
+  t.style.display = "block";
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.style.display = "none", 3000);
+}
+
+function allTags() {
+  const s = new Set();
+  data.words.forEach(w => w.tag && s.add(w.tag));
+  return [...s].sort();
+}
+
+function storageKB() {
+  const raw = localStorage.getItem(STORAGE_KEY) || "";
+  return (new Blob([raw]).size / 1024).toFixed(1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════ */
+document.querySelectorAll(".ttab, .bnav-btn").forEach(btn => {
+  btn.onclick = () => {
+    const page = btn.dataset.page;
+    document.querySelectorAll(".ttab").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".bnav-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(`[data-page="${page}"]`).forEach(b => b.classList.add("active"));
+    $("page-" + page).classList.add("active");
+    if (page === "dashboard") renderDashboard();
+    if (page === "practice") renderPractice();
+    if (page === "settings") renderSettings();
+    if (page === "quiz") renderQuizIdle();
+  };
+});
+
+function goPage(name) {
+  document.querySelectorAll(".ttab").forEach(b => b.classList.toggle("active", b.dataset.page === name));
+  document.querySelectorAll(".bnav-btn").forEach(b => b.classList.toggle("active", b.dataset.page === name));
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === "page-" + name));
+  if (name === "dashboard") renderDashboard();
+  if (name === "practice") renderPractice();
+  if (name === "settings") renderSettings();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER STATS
+═══════════════════════════════════════════════════════════ */
+function updateHeaderStats() {
+  $("hdrTotal").textContent = data.words.length;
+  $("hdrMastered").textContent = data.words.filter(w => w.mastered).length;
+  const dueCount = data.words.filter(w => !w.mastered && srsIsDue(w)).length;
+  $("hdrDue").textContent = dueCount;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════════════════════════════ */
+function renderDashboard() {
+  updateHeaderStats();
+  const total = data.words.length;
+  const mastered = data.words.filter(w => w.mastered).length;
+  const due = data.words.filter(w => !w.mastered && srsIsDue(w)).length;
+  const newW = data.words.filter(w => srsIsNew(w) && !w.mastered).length;
+
+  let totalC = 0, totalW = 0;
+  data.words.forEach(w => { totalC += w.correctCount; totalW += w.wrongCount; });
+  const totalQ = totalC + totalW;
+  const acc = totalQ ? Math.round(totalC / totalQ * 100) : null;
+
+  $("dTotal").textContent = total;
+  $("dMastered").textContent = mastered;
+  $("dMasteredPct").textContent = total ? Math.round(mastered / total * 100) + "% of total" : "0% of total";
+  $("dMasteredBar").style.width = total ? (mastered / total * 100) + "%" : "0%";
+  $("dDue").textContent = due;
+  $("dNew").textContent = newW;
+  $("dAccuracy").textContent = acc !== null ? acc + "%" : "—";
+  $("dAccSub").textContent = totalQ ? `${totalQ} questions answered` : "No quizzes yet";
+  $("dAccBar").style.width = acc !== null ? acc + "%" : "0%";
+  $("dStreak").textContent = data.streak || 0;
+
+  // Weakest words
+  const weak = data.words
+    .filter(w => w.correctCount + w.wrongCount >= 3)
+    .sort((a, b) => {
+      const accA = a.correctCount / (a.correctCount + a.wrongCount);
+      const accB = b.correctCount / (b.correctCount + b.wrongCount);
+      return accA - accB;
+    }).slice(0, 6);
+  const wl = $("weakList");
+  if (weak.length === 0) {
+    wl.innerHTML = `<div class="muted" style="padding:8px 0;">Quiz some words to see weakest here.</div>`;
+  } else {
+    wl.innerHTML = weak.map(w => {
+      const a = wordAccuracy(w);
+      return `<div class="due-item">
+        <div>
+          <div class="due-item-word">${escHtml(w.en)}</div>
+          <div class="due-item-sub">${escHtml(w.fi)}${w.tag ? ` · ${escHtml(w.tag)}` : ""}</div>
+        </div>
+        <span class="due-badge overdue">${a}% correct</span>
+      </div>`;
+    }).join("");
+  }
+
+  // Tag stats
+  const ts = $("tagStats");
+  const tags = allTags();
+  if (!tags.length) {
+    ts.innerHTML = `<div class="muted" style="padding:8px 0;">No tags yet. Add tags when creating words.</div>`;
+  } else {
+    ts.innerHTML = tags.map(tag => {
+      const ws = data.words.filter(w => w.tag === tag);
+      const m = ws.filter(w => w.mastered).length;
+      return `<div class="due-item">
+        <div>
+          <div class="due-item-word">${escHtml(tag)}</div>
+          <div class="due-item-sub">${ws.length} words · ${m} mastered</div>
+        </div>
+        <span class="due-badge review">${ws.length ? Math.round(m/ws.length*100) : 0}%</span>
+      </div>`;
+    }).join("");
+  }
+}
+
+/* Dashboard quick-start buttons */
+$("btnDashQuiz").onclick = () => {
+  goPage("quiz");
+  data.quizFilter = "due"; data.quizDirection = "en_to_fi"; data.quizSessionSize = 20;
+  syncQuizControls(); startQuiz();
+};
+$("btnDashNew").onclick = () => {
+  goPage("quiz");
+  data.quizFilter = "new_only"; data.quizSessionSize = 10;
+  syncQuizControls(); startQuiz();
+};
+$("btnDashAll").onclick = () => {
+  goPage("quiz");
+  data.quizFilter = "all"; data.quizSessionSize = 20;
+  syncQuizControls(); startQuiz();
+};
+
+/* ═══════════════════════════════════════════════════════════
+   PRACTICE — FILTER / SORT / SEARCH
+═══════════════════════════════════════════════════════════ */
+let practiceCurrentPage = 1;
+
+function getFilteredWords() {
+  const search = ($("searchInput").value || "").toLowerCase().trim();
+  const filter = data.practiceFilter;
+  const sort = data.practiceSort;
+  const tag = $("tagFilter") ? $("tagFilter").value : "";
+
+  let idxs = data.words.map((_, i) => i);
+
+  // filter
+  idxs = idxs.filter(i => {
+    const w = data.words[i];
+    if (filter === "all") return true;
+    if (filter === "not_mastered") return !w.mastered;
+    if (filter === "mastered") return w.mastered;
+    if (filter === "new_only") return !w.mastered && srsIsNew(w);
+    return !w.mastered;
+  });
+
+  // tag filter
+  if (tag) idxs = idxs.filter(i => data.words[i].tag === tag);
+
+  // search
+  if (search) {
+    idxs = idxs.filter(i => {
+      const w = data.words[i];
+      return w.en.toLowerCase().includes(search) ||
+             w.fi.toLowerCase().includes(search) ||
+             (w.ar || "").includes(search) ||
+             (w.tag || "").toLowerCase().includes(search);
+    });
+  }
+
+  // sort
+  idxs.sort((a, b) => {
+    const wa = data.words[a], wb = data.words[b];
+    if (sort === "alpha_en") return wa.en.localeCompare(wb.en);
+    if (sort === "alpha_fi") return wa.fi.localeCompare(wb.fi);
+    if (sort === "accuracy") {
+      const aa = wordAccuracy(wa) ?? 101;
+      const ab = wordAccuracy(wb) ?? 101;
+      return aa - ab;
+    }
+    if (sort === "srs") {
+      const da = wa.srsNextReview || "0000";
+      const db = wb.srsNextReview || "0000";
+      return da.localeCompare(db);
+    }
+    return a - b; // date added (original order)
+  });
+
+  return idxs;
+}
+
+function renderTagCloud(selectedTag) {
+  const tags = allTags();
+  const cloud = $("tagCloudWrap");
+  if (!tags.length) { cloud.innerHTML = ""; return; }
+  cloud.innerHTML = `
+    <span class="tag-chip all ${!selectedTag ? "active" : ""}" data-tag="">All</span>
+    ${tags.map(t => `<span class="tag-chip ${t === selectedTag ? "active" : ""}" data-tag="${escHtml(t)}">${escHtml(t)}</span>`).join("")}
+  `;
+  cloud.querySelectorAll(".tag-chip").forEach(chip => {
+    chip.onclick = () => {
+      $("tagFilter").value = chip.dataset.tag;
+      practiceCurrentPage = 1;
+      renderPractice();
+    };
+  });
+}
+
+function updateTagSelects() {
+  const tags = allTags();
+  const tagFilter = $("tagFilter");
+  const cur = tagFilter.value;
+  tagFilter.innerHTML = `<option value="">All tags</option>` +
+    tags.map(t => `<option value="${escHtml(t)}" ${t === cur ? "selected" : ""}>${escHtml(t)}</option>`).join("");
+
+  const tagSuggest = $("tagSuggest");
+  tagSuggest.innerHTML = tags.map(t => `<option value="${escHtml(t)}">`).join("");
+
+  const quizTagSel = $("quizTagSel");
+  quizTagSel.innerHTML = tags.map(t => `<option value="${escHtml(t)}">${escHtml(t)}</option>`).join("");
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRACTICE RENDER
+═══════════════════════════════════════════════════════════ */
+function renderPractice() {
+  // sync controls
+  $("selReps").value = String(data.repsCount);
+  $("selCols").value = String(data.cols);
+  $("practiceFilter").value = data.practiceFilter;
+  $("practiceSort").value = data.practiceSort;
+  updateTagSelects();
+  updateHeaderStats();
+
+  const tag = $("tagFilter").value;
+  renderTagCloud(tag);
+
+  const allIdxs = getFilteredWords();
+  $("statShown").textContent = allIdxs.length;
+
+  const pageSize = data.pageSize || 50;
+  const totalPages = Math.max(1, Math.ceil(allIdxs.length / pageSize));
+  if (practiceCurrentPage > totalPages) practiceCurrentPage = totalPages;
+  const start = (practiceCurrentPage - 1) * pageSize;
+  const pageIdxs = allIdxs.slice(start, start + pageSize);
+
+  const grid = $("grid");
+  grid.innerHTML = "";
+  grid.style.gridTemplateColumns = `repeat(${data.cols}, minmax(0, 1fr))`;
+
+  if (allIdxs.length === 0) {
+    $("practiceEmpty").classList.remove("hidden");
+    $("pagination").innerHTML = "";
+    return;
+  }
+  $("practiceEmpty").classList.add("hidden");
+
+  pageIdxs.forEach(i => {
+    const w = data.words[i];
+    const col = document.createElement("div");
+    const hasAr = !!(w.ar || "").trim();
+    col.className = "col" + (data.hideFi ? " hide-fi" : "") + (hasAr ? " has-ar" : "");
+
+    let repLines = "";
+    for (let r = 0; r < data.repsCount; r++) {
+      repLines += `<div class="line"><input class="repInput" data-word="${i}" data-row="${r}" value="${escHtml(w.reps[r] || "")}" oninput="onRepInput(${i},${r},this.value)"></div>`;
+    }
+
+    const acc = wordAccuracy(w);
+    const accBar = acc !== null ? `
+      <div class="acc-bar">
+        <span class="acc-label">${acc}%</span>
+        <div class="acc-mini"><div class="acc-fill" style="width:${acc}%; background:${acc >= 70 ? "var(--green)" : acc >= 40 ? "var(--gold)" : "var(--red)"}"></div></div>
+      </div>` : "";
+
+    const srsBadge = w.mastered ? "" : srsIsNew(w)
+      ? `<span class="srs-badge srs-new">new</span>`
+      : srsIsDue(w)
+        ? `<span class="srs-badge srs-due">due</span>`
+        : `<span class="srs-badge srs-ok">+${w.srsInterval}d</span>`;
+
+    col.innerHTML = `
+      <div class="head">
+        <textarea class="hText en" rows="1" data-h="en" data-i="${i}">${escHtml(w.en)}</textarea>
+        <textarea class="hText fi" rows="1" data-h="fi" data-i="${i}">${escHtml(w.fi)}</textarea>
+        <textarea class="hText ar" rows="1" data-h="ar" data-i="${i}" placeholder="Arabic…">${escHtml(w.ar || "")}</textarea>
+        <div class="meta">
+          ${srsBadge}
+          ${w.tag ? `<span class="pill">${escHtml(w.tag)}</span>` : ""}
+          <label class="pill"><input type="checkbox" ${w.mastered ? "checked" : ""} onchange="toggleMastered(${i},this.checked)">Mastered</label>
+          <button class="pill danger" onclick="deleteWord(${i})">Delete</button>
+        </div>
+        ${accBar}
+      </div>
+      <div class="repeat">${repLines}</div>
+      <div class="review">
+        <div class="reviewTitle">Review note</div>
+        <input value="${escHtml(w.review || "")}" placeholder="From memory…" oninput="onReviewInput(${i},this.value)">
+      </div>
+    `;
+    grid.appendChild(col);
+  });
+
+  // textarea auto-resize + save
+  grid.querySelectorAll("textarea").forEach(ta => {
+    ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px";
+    ta.oninput = () => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; };
+    ta.onblur = () => {
+      const idx = +ta.dataset.i, field = ta.dataset.h;
+      if (field === "en") data.words[idx].en = sentenceCase(ta.value);
+      if (field === "fi") data.words[idx].fi = normFi(ta.value);
+      if (field === "ar") data.words[idx].ar = normalizeSpaces(ta.value);
+      save(); renderPractice();
+    };
+  });
+
+  // arrow-key navigation in rep inputs
+  grid.querySelectorAll(".repInput").forEach(inp => {
+    inp.addEventListener("keydown", e => {
+      const w = +inp.dataset.word, r = +inp.dataset.row;
+      const visible = getFilteredWords().slice(start, start + pageSize);
+      const pos = visible.indexOf(w);
+      const go = (tw, tr) => {
+        if (tr < 0 || tr >= data.repsCount) return;
+        const el = document.querySelector(`.repInput[data-word="${tw}"][data-row="${tr}"]`);
+        if (el) el.focus();
+      };
+      if (e.key === "ArrowDown" || e.key === "Enter") { e.preventDefault(); go(w, r + 1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); go(w, r - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); go(visible[pos + 1], r); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); go(visible[pos - 1], r); }
+    });
+  });
+
+  renderPagination(allIdxs.length, pageSize, totalPages);
+}
+
+function onRepInput(i, r, val) {
+  if (!data.words[i].reps) data.words[i].reps = [];
+  data.words[i].reps[r] = val;
+  save();
+}
+function onReviewInput(i, val) {
+  data.words[i].review = val; save();
+}
+function toggleMastered(i, val) {
+  data.words[i].mastered = val; save(); renderPractice();
+}
+function deleteWord(i) {
+  if (confirm("Delete this word?")) {
+    data.words.splice(i, 1); save(); renderPractice(); updateHeaderStats();
+  }
+}
+
+function renderPagination(total, pageSize, totalPages) {
+  const pag = $("pagination");
+  if (totalPages <= 1) { pag.innerHTML = ""; return; }
+
+  let html = `<button class="pag-btn" onclick="goPag(${practiceCurrentPage-1})" ${practiceCurrentPage===1?"disabled":""}>‹</button>`;
+  for (let p = 1; p <= totalPages; p++) {
+    if (totalPages > 10 && Math.abs(p - practiceCurrentPage) > 2 && p !== 1 && p !== totalPages) {
+      if (p === 2 || p === totalPages - 1) html += `<span class="pag-info">…</span>`;
+      continue;
+    }
+    html += `<button class="pag-btn ${p === practiceCurrentPage ? "active" : ""}" onclick="goPag(${p})">${p}</button>`;
+  }
+  html += `<button class="pag-btn" onclick="goPag(${practiceCurrentPage+1})" ${practiceCurrentPage===totalPages?"disabled":""}>›</button>`;
+  html += `<span class="pag-info">${total} words</span>`;
+  pag.innerHTML = html;
+}
+
+function goPag(p) {
+  practiceCurrentPage = p;
+  renderPractice();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ── Practice control events ── */
+$("btnAdd").onclick = () => {
+  const en = sentenceCase($("inEn").value);
+  const fi = normFi($("inFi").value);
+  const ar = normalizeSpaces($("inAr").value);
+  const tag = normalizeSpaces($("inTag").value);
+  if (!en || !fi) { showToast("Please fill in English and Finnish.", "#c0392b"); return; }
+
+  const existsFi = data.words.find(w => matchKey(w.fi) === matchKey(fi));
+  const existsEn = data.words.find(w => matchKey(w.en) === matchKey(en));
+  if (existsFi && !confirm(`"${fi}" already exists as "${existsFi.en}". Add anyway?`)) return;
+  else if (!existsFi && existsEn && !confirm(`"${en}" already exists for "${existsEn.fi}". Add anyway?`)) return;
+
+  data.words.push(defaultWord({ en, fi, ar, tag, review: "", mastered: false, reps: [] }));
+  $("inEn").value = $("inFi").value = $("inAr").value = "";
+  save(); practiceCurrentPage = 1; renderPractice(); showToast("Word added! ✓", "#1a8a5a");
+};
+
+["inEn","inFi","inAr","inTag"].forEach(id => {
+  $(id).addEventListener("keydown", e => { if (e.key === "Enter") $("btnAdd").click(); });
+});
+
+$("btnToggleHide").onclick = () => { data.hideFi = !data.hideFi; save(); renderPractice(); };
+$("practiceFilter").onchange = () => { data.practiceFilter = $("practiceFilter").value; practiceCurrentPage = 1; save(); renderPractice(); };
+$("practiceSort").onchange = () => { data.practiceSort = $("practiceSort").value; practiceCurrentPage = 1; save(); renderPractice(); };
+$("selReps").onchange = () => { data.repsCount = +$("selReps").value; save(); renderPractice(); };
+$("selCols").onchange = () => { data.cols = +$("selCols").value; save(); renderPractice(); };
+$("tagFilter").onchange = () => { practiceCurrentPage = 1; renderPractice(); };
+$("searchInput").oninput = () => { practiceCurrentPage = 1; renderPractice(); };
+$("btnClearReps").onclick = () => {
+  if (confirm("Clear ALL repetitions?")) { data.words.forEach(w => w.reps = []); save(); renderPractice(); }
+};
+
+/* ═══════════════════════════════════════════════════════════
+   QUIZ — SRS ENGINE
+═══════════════════════════════════════════════════════════ */
+let quizQueue = [];      // [{wordIdx, direction}]
+let quizPos = 0;
+let hasChecked = false;
+let sessionCorrect = 0;
+let sessionWrong = 0;
+let wrongInSession = {};  // wordIdx -> times wrong this session
+
+function syncQuizControls() {
+  $("quizFilter").value = data.quizFilter;
+  $("quizDirection").value = data.quizDirection;
+  $("quizSessionSize").value = String(data.quizSessionSize);
+  toggleQuizTagGroup();
+}
+
+function toggleQuizTagGroup() {
+  $("quizTagGroup").style.display = data.quizFilter === "tag" ? "" : "none";
+}
+
+$("quizFilter").onchange = () => { data.quizFilter = $("quizFilter").value; save(); toggleQuizTagGroup(); };
+$("quizDirection").onchange = () => { data.quizDirection = $("quizDirection").value; save(); };
+$("quizSessionSize").onchange = () => { data.quizSessionSize = +$("quizSessionSize").value; save(); };
+$("quizTagSel").onchange = () => {};
+
+function buildQuizPool() {
+  const filter = data.quizFilter;
+  const selTag = $("quizTagSel").value;
+  let idxs = data.words.map((_, i) => i);
+
+  if (filter === "due") idxs = idxs.filter(i => !data.words[i].mastered && srsIsDue(data.words[i]));
+  else if (filter === "new_only") idxs = idxs.filter(i => srsIsNew(data.words[i]) && !data.words[i].mastered);
+  else if (filter === "not_mastered") idxs = idxs.filter(i => !data.words[i].mastered);
+  else if (filter === "weak") idxs = idxs.filter(i => {
+    const w = data.words[i];
+    const total = w.correctCount + w.wrongCount;
+    return total >= 2 && w.correctCount / total < 0.6;
+  });
+  else if (filter === "tag") idxs = idxs.filter(i => data.words[i].tag === selTag);
+
+  // sort: new and overdue first
+  idxs.sort((a, b) => {
+    const wa = data.words[a], wb = data.words[b];
+    if (srsIsNew(wa) !== srsIsNew(wb)) return srsIsNew(wa) ? -1 : 1;
+    const da = wa.srsNextReview || "0000", db = wb.srsNextReview || "0000";
+    return da.localeCompare(db);
+  });
+
+  // shuffle within same-day due
+  for (let i = idxs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+  }
+
+  // cap session size
+  const sz = data.quizSessionSize;
+  if (sz > 0) idxs = idxs.slice(0, sz);
+
+  return idxs;
+}
+
+function makeDirection(wordIdx) {
+  const dir = data.quizDirection;
+  if (dir === "mix") return Math.random() < 0.5 ? "en_to_fi" : "fi_to_en";
+  return dir;
+}
+
+function startQuiz() {
+  $("quizIdle").style.display = "none";
+  $("sessionDone").style.display = "none";
+  $("quizCard").style.display = "";
+  $("quizInputRow").style.display = "";
+  $("quizProgressRow").style.display = "";
+  $("quizActions").style.display = "";
+  $("srsButtons").classList.remove("show");
+
+  updateTagSelects();
+  syncQuizControls();
+
+  const pool = buildQuizPool();
+  if (!pool.length) {
+    showToast("No words match the selected filter.", "#856404");
+    $("quizCard").style.display = "none";
+    $("quizInputRow").style.display = "none";
+    $("quizProgressRow").style.display = "none";
+    $("quizActions").style.display = "none";
+    $("quizIdle").style.display = "";
+    return;
+  }
+
+  quizQueue = pool.map(i => ({ wordIdx: i, direction: makeDirection(i) }));
+  quizPos = 0;
+  sessionCorrect = 0;
+  sessionWrong = 0;
+  wrongInSession = {};
+  showQuizQuestion();
+}
+
+function renderQuizIdle() {
+  $("quizIdle").style.display = "";
+  $("sessionDone").style.display = "none";
+  $("quizCard").style.display = "none";
+  $("quizInputRow").style.display = "none";
+  $("quizProgressRow").style.display = "none";
+  $("quizActions").style.display = "none";
+  $("srsButtons").classList.remove("show");
+  syncQuizControls();
+  updateTagSelects();
+}
+
+function showQuizQuestion() {
+  hasChecked = false;
+  $("qResult").classList.remove("show", "ok", "bad");
+  $("qResult").innerHTML = "";
+  $("qAnswer").classList.remove("correct", "wrong");
+  $("srsButtons").classList.remove("show");
+
+  if (quizPos >= quizQueue.length) {
+    showSessionDone(); return;
+  }
+
+  const { wordIdx, direction } = quizQueue[quizPos];
+  const w = data.words[wordIdx];
+  const progress = (quizPos / quizQueue.length) * 100;
+
+  $("quizProgressFill").style.width = progress + "%";
+  $("qCount").textContent = `${quizPos + 1} / ${quizQueue.length}`;
+
+  if (direction === "en_to_fi") {
+    $("qDirection").textContent = "English → Finnish";
+    $("qWord").textContent = w.en;
+    $("qSub").textContent = w.ar || "";
+    $("qAnswer").placeholder = "Type Finnish…";
+  } else {
+    $("qDirection").textContent = "Finnish → English";
+    $("qWord").textContent = w.fi;
+    $("qSub").textContent = "";
+    $("qAnswer").placeholder = "Type English…";
+  }
+
+  // Tags
+  $("qTags").innerHTML = w.tag ? `<span class="quiz-tag">${escHtml(w.tag)}</span>` : "";
+
+  // SRS info
+  const acc = wordAccuracy(w);
+  $("qSrsInfo").textContent = acc !== null
+    ? `Accuracy: ${acc}% · ${w.correctCount + w.wrongCount} attempts`
+    : "First attempt";
+
+  $("qAnswer").value = "";
+  $("qAnswer").focus();
+
+  // Update SRS button labels for this word
+  const nextOk = Math.max(1, Math.round((w.srsInterval || 1) * 2));
+  const nextEasy = Math.max(1, Math.round((w.srsInterval || 1) * 4));
+  $("btnOkLabel").textContent = `+${nextOk} days`;
+  $("btnEasyLabel").textContent = `+${nextEasy} days`;
+}
+
+function checkAnswer() {
+  if (hasChecked || quizPos >= quizQueue.length) return;
+  const answer = $("qAnswer").value.trim();
+  if (!answer) { showToast("Type an answer first!"); return; }
+
+  const { wordIdx, direction } = quizQueue[quizPos];
+  const w = data.words[wordIdx];
+  const correct = direction === "en_to_fi" ? w.fi : w.en;
+  const isCorrect = matchKey(answer) === matchKey(correct);
+
+  hasChecked = true;
+
+  if (isCorrect) {
+    sessionCorrect++;
+    w.correctCount++;
+    $("qAnswer").classList.add("correct");
+    $("qResult").innerHTML = `<span class="result-correct">Correct! ✓</span>`;
+    $("qResult").className = "quiz-result show ok";
+  } else {
+    sessionWrong++;
+    w.wrongCount++;
+    $("qAnswer").classList.add("wrong");
+    $("qResult").innerHTML = `<span class="result-wrong">Not quite ✗</span><div class="result-answer">${escHtml(correct)}</div>`;
+    $("qResult").className = "quiz-result show bad";
+
+    // Re-queue wrong answers (max 2 extra times per word per session)
+    const wrongTimes = (wrongInSession[wordIdx] || 0) + 1;
+    wrongInSession[wordIdx] = wrongTimes;
+    if (wrongTimes <= 2) {
+      const reinsertAt = Math.min(quizPos + 3 + Math.floor(Math.random() * 3), quizQueue.length);
+      quizQueue.splice(reinsertAt, 0, { wordIdx, direction });
+    }
+  }
+
+  save();
+  $("srsButtons").classList.add("show");
+  $("quizActions").style.display = "none";
+}
+
+function applySRS(rating) {
+  // rating: 'hard' | 'ok' | 'easy'
+  const { wordIdx } = quizQueue[quizPos];
+  const w = data.words[wordIdx];
+
+  const today = todayStamp();
+  let interval;
+  if (rating === "hard") {
+    interval = 1;
+    w.srsEase = Math.max(1.3, (w.srsEase || 2.5) - 0.2);
+  } else if (rating === "ok") {
+    interval = Math.max(1, Math.round((w.srsInterval || 1) * (w.srsEase || 2.5)));
+    interval = Math.min(interval, 30);
+  } else { // easy
+    interval = Math.max(1, Math.round((w.srsInterval || 1) * (w.srsEase || 2.5) * 1.5));
+    interval = Math.min(interval, 60);
+    w.srsEase = Math.min(3.0, (w.srsEase || 2.5) + 0.1);
+  }
+
+  w.srsInterval = interval;
+  const nextDate = new Date();
+  nextDate.setDate(nextDate.getDate() + interval);
+  w.srsNextReview = nextDate.toISOString().slice(0, 10);
+  save();
+
+  quizPos++;
+  showQuizQuestion();
+  $("quizActions").style.display = "";
+}
+
+function revealAnswer() {
+  if (hasChecked) return;
+  const { wordIdx, direction } = quizQueue[quizPos];
+  const w = data.words[wordIdx];
+  const correct = direction === "en_to_fi" ? w.fi : w.en;
+
+  hasChecked = true;
+  w.wrongCount++;
+  sessionWrong++;
+
+  $("qAnswer").classList.add("wrong");
+  $("qResult").innerHTML = `<span class="result-wrong">Revealed ✗</span><div class="result-answer">${escHtml(correct)}</div>`;
+  $("qResult").className = "quiz-result show bad";
+
+  const wrongTimes = (wrongInSession[wordIdx] || 0) + 1;
+  wrongInSession[wordIdx] = wrongTimes;
+  if (wrongTimes <= 2) {
+    const reinsertAt = Math.min(quizPos + 3, quizQueue.length);
+    quizQueue.splice(reinsertAt, 0, { wordIdx, direction: makeDirection(wordIdx) });
+  }
+
+  save();
+  $("srsButtons").classList.add("show");
+  $("quizActions").style.display = "none";
+}
+
+function showSessionDone() {
+  $("quizCard").style.display = "none";
+  $("quizInputRow").style.display = "none";
+  $("quizProgressRow").style.display = "none";
+  $("quizActions").style.display = "none";
+  $("srsButtons").classList.remove("show");
+  $("sessionDone").style.display = "";
+
+  const total = sessionCorrect + sessionWrong;
+  const acc = total ? Math.round(sessionCorrect / total * 100) : 0;
+  $("doneCorrect").textContent = sessionCorrect;
+  $("doneWrong").textContent = sessionWrong;
+  $("doneAcc").textContent = total ? acc + "%" : "—";
+  $("doneSubtext").textContent = acc >= 80
+    ? "Excellent session! Keep it up." : acc >= 60
+    ? "Good work! Review the tricky ones." : "Keep practicing — you'll get there!";
+  $("quizProgressFill").style.width = "100%";
+
+  // Update streak
+  const today = todayStamp();
+  if (data.lastStreakDate !== today) {
+    const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+    const yd = yesterday.toISOString().slice(0, 10);
+    data.streak = (data.lastStreakDate === yd) ? (data.streak || 0) + 1 : 1;
+    data.lastStreakDate = today;
+    save();
+  }
+  updateHeaderStats();
+}
+
+/* Quiz button events */
+$("btnStartQuiz").onclick = startQuiz;
+$("btnCheck").onclick = checkAnswer;
+$("btnReveal").onclick = revealAnswer;
+$("btnSkip").onclick = () => {
+  if (!hasChecked) { revealAnswer(); return; }
+  applySRS("hard");
+};
+$("btnHard").onclick = () => applySRS("hard");
+$("btnOk").onclick   = () => applySRS("ok");
+$("btnEasy").onclick = () => applySRS("easy");
+$("btnAgain").onclick = startQuiz;
+$("btnGoHome").onclick = () => { goPage("dashboard"); };
+$("qAnswer").onkeydown = e => { if (e.key === "Enter") { if (!hasChecked) checkAnswer(); } };
+
+/* ═══════════════════════════════════════════════════════════
+   SETTINGS
+═══════════════════════════════════════════════════════════ */
+function renderSettings() {
+  $("sReps").value = String(data.repsCount);
+  $("sCols").value = String(data.cols);
+  $("sPageSize").value = String(data.pageSize || 50);
+  $("storageUsed").textContent = storageKB() + " KB / ~5120 KB";
+}
+
+$("sReps").onchange = () => { data.repsCount = +$("sReps").value; save(); };
+$("sCols").onchange = () => { data.cols = +$("sCols").value; save(); };
+$("sPageSize").onchange = () => { data.pageSize = +$("sPageSize").value; save(); };
+
+$("btnExport").onclick = () => {
+  const csv = [["Front","Back"],
+    ...data.words.map(w => [(w.ar ? `${w.en} / ${w.ar}` : w.en), w.fi])]
+    .map(r => r.map(v => /[,"\n]/.test(v) ? `"${v.replace(/"/g,'""')}"` : v).join(",")).join("\n");
+  downloadFile("finnish_vocab.csv", "\uFEFF" + csv, "text/csv");
+};
+
+$("btnBackup").onclick = () => {
+  downloadFile("vocab_backup_" + todayStamp() + ".json", JSON.stringify(data, null, 2), "application/json");
+};
+
+$("btnRestore").onclick = () => $("restoreFile").click();
+$("restoreFile").onchange = async e => {
+  const file = e.target.files[0]; if (!file) return;
+  try {
+    const json = JSON.parse(await file.text());
+    const restored = normalizeData(json.data || json);
+    if (restored && Array.isArray(restored.words)) {
+      data = restored; save(); renderDashboard(); renderSettings();
+      showToast("Restored successfully! ✓", "#1a8a5a");
+    } else throw new Error();
+  } catch { showToast("Error: invalid backup file.", "#c0392b"); }
+  finally { e.target.value = ""; }
+};
+
+$("btnClearRepsAll").onclick = () => {
+  if (confirm("Clear ALL repetition text for ALL words?")) {
+    data.words.forEach(w => w.reps = []); save(); showToast("All reps cleared.");
+  }
+};
+$("btnResetSRS").onclick = () => {
+  if (confirm("Reset all SRS data? (Next review dates and intervals will be erased)")) {
+    data.words.forEach(w => { w.srsInterval = 0; w.srsNextReview = null; w.srsEase = 2.5; });
+    save(); showToast("SRS data reset.");
+  }
+};
+$("btnResetAll").onclick = () => {
+  if (confirm("DELETE ALL WORDS? This cannot be undone!")) {
+    if (confirm("Are you sure? All data will be lost.")) {
+      data.words = []; data.streak = 0; data.lastStreakDate = null;
+      save(); renderDashboard(); renderSettings(); showToast("All data deleted.");
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════════════════════ */
+function downloadFile(name, content, type) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = name; a.click();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════════ */
+renderDashboard();
+</script>
+</body>
+</html>
